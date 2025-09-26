@@ -1,32 +1,99 @@
 body {
-  font-family: Poppins, Roboto Slab,Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
-  padding: 0;
   background: #f4f6f9;
   color: #333;
 }
 
-header {
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: #007acc;
-  color: white;
-  text-align: center;
   padding: 1rem;
+  color: white;
 }
 
+.navbar .logo {
+  font-size: 1.5rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  padding: 2rem;
+}
+
+.tab-section {
+  display: none;
+}
+
+.tab-section.active {
+  display: block;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 1rem;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.remove-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255, 0, 0, 0.8);
+  border: none;
+  color: white;
+  padding: 4px 6px;
+  cursor: pointer;
+  border-radius: 5px;
+}
 
 .form-section {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem;
   gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .form-section input {
   padding: 0.5rem;
-  width: 250px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  flex: 1;
 }
 
 .form-section button {
@@ -42,43 +109,40 @@ header {
   background: #005fa3;
 }
 
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  padding: 1rem;
+#contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 400px;
 }
 
-.gallery-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.05);
-}
-
-.remove-btn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: rgba(255, 0, 0, 0.8);
-  border: none;
-  color: white;
-  font-size: 14px;
-  padding: 4px 6px;
-  cursor: pointer;
+#contactForm input,
+#contactForm textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+#contactForm button {
+  padding: 0.7rem;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#contactForm button:hover {
+  background: #218838;
+}
+
+.form-message {
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+  }
 }
