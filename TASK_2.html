@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Image Gallery</title>
+  <link rel="stylesheet" href="TASK_2.css">
+</head>
+<body>
+  <header>
+    <h1>My Image Gallery</h1>
+  </header>
+
+  <section class="form-section">
+    <input type="text" id="imageUrl" placeholder="Enter image URL">
+    <input type="file" id="fileInput" accept="image/*">
+    <button id="addImageBtn">Add Image</button>
+  </section>
+
+  
+  <main class="gallery" id="gallery">
+    
+    <div class="gallery-item">
+        <img src="IMAGE_1.jpg" alt="Default Image 1">
+        <button class="remove-btn">X</button>
+    </div>
+
+    <div class="gallery-item">
+        <img src="IMAGE_2.jpg" alt="Default Image 1">
+        <button class="remove-btn">X</button>
+    </div>
+
+    <div class="gallery-item">
+        <img src="IMAGE_3.jpg" alt="Default Image 1">
+        <button class="remove-btn">X</button>
+    </div>
+
+    <div class="gallery-item">
+        <img src="IMAGE_4.jpg" alt="Default Image 1">
+        <button class="remove-btn">X</button>
+    </div>
+    <div class="gallery-item">
+        <img src="IMAGE_5.jpg" alt="Default Image 1">
+        <button class="remove-btn">X</button>
+    </div>
+  </main>
+
+  <script src="TASK_2.js"></script>
+</body>
+</html>
