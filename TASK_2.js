@@ -1,15 +1,23 @@
+const tabLinks = document.querySelectorAll(".tab-link");
+const tabSections = document.querySelectorAll(".tab-section");
+
+tabLinks.forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    const target = link.getAttribute("data-target");
+
+    tabSections.forEach(section => section.classList.remove("active"));
+    document.getElementById(target).classList.add("active");
+  });
+});
+
 const addImageBtn = document.getElementById("addImageBtn");
 const imageUrlInput = document.getElementById("imageUrl");
 const fileInput = document.getElementById("fileInput");
-const gallery = document.getElementById("gallery");
-
-function removeImage(e) {
-  const galleryItem = e.target.parentElement;
-  galleryItem.remove();
-}
+const gallery = document.getElementById("galleryContainer");
 
 document.querySelectorAll(".remove-btn").forEach(btn => {
-  btn.addEventListener("click", removeImage);
+  btn.addEventListener("click", e => e.target.parentElement.remove());
 });
 
 function addImage() {
@@ -17,7 +25,7 @@ function addImage() {
   const file = fileInput.files[0];
 
   if (!url && !file) {
-    alert("Please enter an image URL or choose a file");
+    alert("Enter URL or choose a file");
     return;
   }
 
@@ -30,7 +38,7 @@ function addImage() {
   const removeBtn = document.createElement("button");
   removeBtn.textContent = "X";
   removeBtn.classList.add("remove-btn");
-  removeBtn.addEventListener("click", () => galleryItem.remove());
+  removeBtn.addEventListener("click", e => galleryItem.remove());
 
   galleryItem.appendChild(img);
   galleryItem.appendChild(removeBtn);
@@ -38,12 +46,10 @@ function addImage() {
 
   if (file) {
     const reader = new FileReader();
-    reader.onload = function(e) {
-      img.src = e.target.result;
-    };
+    reader.onload = e => img.src = e.target.result;
     reader.readAsDataURL(file);
   } else {
-    img.src = url; 
+    img.src = url;
   }
 
   imageUrlInput.value = "";
@@ -51,3 +57,30 @@ function addImage() {
 }
 
 addImageBtn.addEventListener("click", addImage);
+
+const contactForm = document.getElementById("contactForm");
+const formMessage = document.getElementById("formMessage");
+
+contactForm.addEventListener("submit", e => {
+  e.preventDefault();
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  if (!name || !email || !message) {
+    formMessage.textContent = "All fields are required!";
+    formMessage.style.color = "red";
+    return;
+  }
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    formMessage.textContent = "Invalid email!";
+    formMessage.style.color = "red";
+    return;
+  }
+
+  formMessage.textContent = "Message sent successfully!";
+  formMessage.style.color = "green";
+  contactForm.reset();
+});
